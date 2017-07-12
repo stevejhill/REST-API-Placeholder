@@ -1,0 +1,65 @@
+{
+	"variables": [],
+	"info": {
+		"name": "api.placeholder",
+		"_postman_id": "d69e592a-6656-bfb9-3673-29b8bc089b64",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post example",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"postman.setGlobalVariable(\"api.placeholder.request.guid\", responseBody);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://rest-api-placeholder.azurewebsites.net/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"test\":\"test data\" }"
+				},
+				"description": "Run this first to get guid added to api.placeholders.request.guid variable"
+			},
+			"response": []
+		},
+		{
+			"name": "Get last request",
+			"request": {
+				"url": "http://rest-api-placeholder.azurewebsites.net/api/calls/{{api.placeholder.request.guid}}",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete last request from memory",
+			"request": {
+				"url": "http://rest-api-placeholder.azurewebsites.net/api/calls/{{api.placeholder.request.guid}}",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
